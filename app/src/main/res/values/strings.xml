@@ -4,11 +4,29 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="tradingmarket_fragment">"Trading Market View"</string>
-<!--    <string name="tradingmarket_fragment_holder">Trading Mar Fragment</string>-->
+    <!--    <string name="tradingmarket_fragment_holder">Trading Mar Fragment</string>-->
 
     <string name="watchlist_fragment">"Watchlist"</string>
-<!--    <string name="watchlist_fragment_holder">Watcher Fragment</string>-->
+    <!--    <string name="watchlist_fragment_holder">Watcher Fragment</string>-->
 
     <string name="error_fragment">Error loading the page.</string>
+
+<!--    Currency Chip Group-->
+    <string name="chip_usd">USD</string>
+    <string name="chip_eur">EUR</string>
+    <string name="chip_jpy">JPY</string>
+    <string name="chip_gbp">GBP</string>
+    <string name="chip_aud">AUD</string>
+    <string name="chip_cad">CAD</string>
+    <string name="chip_chf">CHF</string>
+    <string name="chip_cny">CNY</string>
+    <string name="chip_sgd">SGD</string>
+    <string name="chip_krw">KRW</string>
+
+<!--    Order Chip Group-->
+    <string name="market_cap_asc">Market Cap Asc</string>
+    <string name="market_cap_desc">Market Cap Desc</string>
+    <string name="name_asc">Name Asc</string>
+    <string name="name_desc">Name Desc</string>
 
 </resources>

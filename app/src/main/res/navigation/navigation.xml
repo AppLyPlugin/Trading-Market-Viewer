@@ -7,12 +7,29 @@
 
     <fragment
         android:id="@+id/tradingMarketFragment"
-        android:name="com.applyplugin.tradingmarketviewer.ui.TradingMarketFragment"
+        android:name="com.applyplugin.tradingmarketviewer.ui.fragments.tradingmarket.TradingMarketFragment"
         android:label="@string/tradingmarket_fragment"
-        tools:layout="@layout/fragment_tradingmarket" />
+        tools:layout="@layout/tradingmarket_fragment" >
+        <action
+            android:id="@+id/action_tradingMarketFragment_to_tradingMarketBottomSheet"
+            app:destination="@id/tradingMarketBottomSheet" />
+        <argument
+            android:name="fromBottomSheet"
+            app:argType="boolean"
+            android:defaultValue="false" />
+    </fragment>
     <fragment
         android:id="@+id/watchFragment"
-        android:name="com.applyplugin.tradingmarketviewer.ui.WatchlistFragment"
+        android:name="com.applyplugin.tradingmarketviewer.ui.fragments.watchlist.WatchlistFragment"
         android:label="@string/watchlist_fragment"
         tools:layout="@layout/fragment_watchlist" />
+    <dialog
+        android:id="@+id/tradingMarketBottomSheet"
+        android:name="com.applyplugin.tradingmarketviewer.ui.fragments.tradingmarket.botomsheet.TradingMarketBottomSheet"
+        android:label="tradingmarket_bottom_sheet"
+        tools:layout="@layout/tradingmarket_bottom_sheet" >
+        <action
+            android:id="@+id/action_tradingMarketBottomSheet_to_tradingMarketFragment"
+            app:destination="@id/tradingMarketFragment" />
+    </dialog>
 </navigation>

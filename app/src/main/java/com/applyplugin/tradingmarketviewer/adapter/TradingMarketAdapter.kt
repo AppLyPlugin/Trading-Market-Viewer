@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.applyplugin.tradingmarketviewer.databinding.RowLayoutTradingmarketBinding
+import com.applyplugin.tradingmarketviewer.databinding.TradingmarketRowLayoutBinding
 import com.applyplugin.tradingmarketviewer.model.TradingMarketResponse
 import com.applyplugin.tradingmarketviewer.util.TradingMarketDiffUtil
 
@@ -12,7 +12,7 @@ class TradingMarketAdapter : RecyclerView.Adapter<TradingMarketAdapter.MyViewHol
 
     private var tradingMarketResponse = emptyList<TradingMarketResponse>()
 
-    class MyViewHolder(private val binding: RowLayoutTradingmarketBinding) :
+    class MyViewHolder(private val binding: TradingmarketRowLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(tradingMarketResponse: TradingMarketResponse) {
@@ -23,7 +23,7 @@ class TradingMarketAdapter : RecyclerView.Adapter<TradingMarketAdapter.MyViewHol
         companion object {
             fun from(parent: ViewGroup): MyViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val binding = RowLayoutTradingmarketBinding.inflate(layoutInflater, parent, false)
+                val binding = TradingmarketRowLayoutBinding.inflate(layoutInflater, parent, false)
                 return MyViewHolder(binding)
             }
         }

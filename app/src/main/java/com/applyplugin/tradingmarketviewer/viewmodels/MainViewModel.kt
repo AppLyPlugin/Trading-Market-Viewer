@@ -1,4 +1,4 @@
-package com.applyplugin.tradingmarketviewer
+package com.applyplugin.tradingmarketviewer.viewmodels
 
 import android.app.Application
 import android.content.Context

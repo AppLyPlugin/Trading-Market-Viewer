@@ -1,7 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
-    id 'androidx.navigation.safeargs'
+    id 'androidx.navigation.safeargs.kotlin'
     id 'dagger.hilt.android.plugin'
     id 'kotlin-kapt'
 }
@@ -68,7 +68,7 @@ dependencies {
     //Gson Annotation
     implementation 'com.google.code.gson:gson:2.10.1'
 
-    // Kotlin
+    // Kotlin Navigation
     implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
     implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
 
@@ -115,6 +115,7 @@ dependencies {
     implementation('io.coil-kt:coil-compose:2.4.0')
 
     //Preferences Datastore
-    implementation("androidx.datastore:datastore-preferences-android:1.1.0-alpha04")
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
+    implementation("androidx.datastore:datastore-preferences-core:1.0.0")
 
 }

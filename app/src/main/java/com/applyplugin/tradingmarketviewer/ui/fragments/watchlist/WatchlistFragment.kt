@@ -1,4 +1,4 @@
-package com.applyplugin.tradingmarketviewer.ui
+package com.applyplugin.tradingmarketviewer.ui.fragments.watchlist
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

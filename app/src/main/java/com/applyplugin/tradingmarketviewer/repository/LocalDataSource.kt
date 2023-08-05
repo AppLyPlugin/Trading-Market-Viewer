@@ -5,6 +5,7 @@ import com.applyplugin.tradingmarketviewer.repository.database.TradingMarketEnti
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
+
 class LocalDataSource @Inject constructor(
     private val tradingMarketDao: TradingMarketDao
 ) {

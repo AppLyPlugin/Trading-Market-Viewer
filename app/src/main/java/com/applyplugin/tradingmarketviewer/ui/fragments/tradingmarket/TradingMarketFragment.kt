@@ -1,4 +1,4 @@
-package com.applyplugin.tradingmarketviewer.ui
+package com.applyplugin.tradingmarketviewer.ui.fragments.tradingmarket
 
 import android.os.Bundle
 import android.util.Log
@@ -9,14 +9,16 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.applyplugin.tradingmarketviewer.MainViewModel
+import com.applyplugin.tradingmarketviewer.R
+import com.applyplugin.tradingmarketviewer.viewmodels.MainViewModel
 import com.applyplugin.tradingmarketviewer.adapter.TradingMarketAdapter
-import com.applyplugin.tradingmarketviewer.databinding.FragmentTradingmarketBinding
-import com.applyplugin.tradingmarketviewer.util.Constants.Companion.API_DELAY
+import com.applyplugin.tradingmarketviewer.databinding.TradingmarketFragmentBinding
+import com.applyplugin.tradingmarketviewer.viewmodels.TradingMarketViewModel
 import com.applyplugin.tradingmarketviewer.util.NetworkResult
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -26,21 +28,26 @@ class TradingMarketFragment : Fragment() {
     private val mainViewModel: MainViewModel by viewModels()
     private val tradingMarketViewModel: TradingMarketViewModel by viewModels()
 
-    private var _binding: FragmentTradingmarketBinding? = null
+    private var _binding: TradingmarketFragmentBinding? = null
     private val binding get() = _binding!!
+
+    private val arg by navArgs<TradingMarketFragmentArgs>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
-        _binding = FragmentTradingmarketBinding.inflate(inflater, container, false)
+        _binding = TradingmarketFragmentBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
         binding.mainViewModel = mainViewModel
 
         setUpRecyclerView()
-
         requestApiData()
+
+        binding.filterFab.setOnClickListener {
+            findNavController().navigate(R.id.action_tradingMarketFragment_to_tradingMarketBottomSheet)
+        }
 
         return binding.root
     }

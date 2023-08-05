@@ -6,14 +6,14 @@
     <data>
         <variable
             name="mainViewModel"
-            type="com.applyplugin.tradingmarketviewer.MainViewModel" />
+            type="com.applyplugin.tradingmarketviewer.viewmodels.MainViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:background="@color/lightGray"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.TradingMarketFragment">
+        tools:context=".ui.fragments.tradingmarket.TradingMarketFragment">
 
         <ImageView
             android:id="@+id/error_img"
@@ -66,29 +66,29 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <include layout="@layout/placeholder_row_layout_tradingmarket" />
+                <include layout="@layout/tradingmarket_placeholder_row_layout" />
 
-                <include layout="@layout/placeholder_row_layout_tradingmarket" />
+                <include layout="@layout/tradingmarket_placeholder_row_layout" />
 
-                <include layout="@layout/placeholder_row_layout_tradingmarket" />
+                <include layout="@layout/tradingmarket_placeholder_row_layout" />
 
-                <include layout="@layout/placeholder_row_layout_tradingmarket" />
+                <include layout="@layout/tradingmarket_placeholder_row_layout" />
 
-                <include layout="@layout/placeholder_row_layout_tradingmarket" />
+                <include layout="@layout/tradingmarket_placeholder_row_layout" />
 
-                <include layout="@layout/placeholder_row_layout_tradingmarket" />
+                <include layout="@layout/tradingmarket_placeholder_row_layout" />
 
-                <include layout="@layout/placeholder_row_layout_tradingmarket" />
+                <include layout="@layout/tradingmarket_placeholder_row_layout" />
 
-                <include layout="@layout/placeholder_row_layout_tradingmarket" />
+                <include layout="@layout/tradingmarket_placeholder_row_layout" />
 
-                <include layout="@layout/placeholder_row_layout_tradingmarket" />
+                <include layout="@layout/tradingmarket_placeholder_row_layout" />
 
-                <include layout="@layout/placeholder_row_layout_tradingmarket" />
+                <include layout="@layout/tradingmarket_placeholder_row_layout" />
 
-                <include layout="@layout/placeholder_row_layout_tradingmarket" />
+                <include layout="@layout/tradingmarket_placeholder_row_layout" />
 
-                <include layout="@layout/placeholder_row_layout_tradingmarket" />
+                <include layout="@layout/tradingmarket_placeholder_row_layout" />
 
             </LinearLayout>
         </com.facebook.shimmer.ShimmerFrameLayout>
@@ -105,7 +105,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionButton"
+            android:id="@+id/filter_fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:clickable="true"
