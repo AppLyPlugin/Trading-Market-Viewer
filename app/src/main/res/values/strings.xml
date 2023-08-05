@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Trading Market Viewer</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="tradingmarket_fragment">"Trading Market View"</string>
+<!--    <string name="tradingmarket_fragment_holder">Trading Mar Fragment</string>-->
+
+    <string name="watchlist_fragment">"Watchlist"</string>
+<!--    <string name="watchlist_fragment_holder">Watcher Fragment</string>-->
+
+    <string name="error_fragment">Error loading the page.</string>
+
+</resources>

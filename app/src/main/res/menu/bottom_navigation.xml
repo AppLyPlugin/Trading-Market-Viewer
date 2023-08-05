@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/tradingMarketFragment"
+        android:title="@string/tradingmarket_fragment"
+        android:icon="@drawable/ic_bottom_nav_tradingmarket"/>
+
+    <item android:id="@+id/watchFragment"
+        android:title="@string/watchlist_fragment"
+        android:icon="@drawable/ic_bottom_nav_watchlist"/>
+
+</menu>

@@ -1,0 +1,34 @@
+<project version="4">
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/AndroidStudio/Kotlin/CryptocurrencyTracker/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.178" />
+        <entry key="..\:/AndroidStudio/Kotlin/CryptocurrencyTracker/app/src/main/res/drawable/ic_launcher_background.xml" value="0.178" />
+        <entry key="..\:/AndroidStudio/Kotlin/CryptocurrencyTracker/app/src/main/res/font/alfa_slab_one.xml" value="0.21927083333333333" />
+        <entry key="..\:/AndroidStudio/Kotlin/CryptocurrencyTracker/app/src/main/res/font/cabin_sketch.xml" value="0.29583333333333334" />
+        <entry key="..\:/AndroidStudio/Kotlin/CryptocurrencyTracker/app/src/main/res/font/im_fell_great_primer_sc.xml" value="0.21927083333333333" />
+        <entry key="..\:/AndroidStudio/Kotlin/CryptocurrencyTracker/app/src/main/res/layout/activity_main.xml" value="0.13486842105263158" />
+        <entry key="..\:/AndroidStudio/Kotlin/CryptocurrencyTracker/app/src/main/res/layout/crypto_placeholder_row_layout.xml" value="0.265625" />
+        <entry key="..\:/AndroidStudio/Kotlin/CryptocurrencyTracker/app/src/main/res/layout/crypto_row_layout.xml" value="0.3129411764705882" />
+        <entry key="..\:/AndroidStudio/Kotlin/CryptocurrencyTracker/app/src/main/res/layout/cyrpto_placeholder_test.xml" value="0.264" />
+        <entry key="..\:/AndroidStudio/Kotlin/CryptocurrencyTracker/app/src/main/res/layout/fragment_crypto.xml" value="0.1" />
+        <entry key="..\:/AndroidStudio/Kotlin/CryptocurrencyTracker/app/src/main/res/layout/fragment_favorites.xml" value="0.1609375" />
+        <entry key="..\:/AndroidStudio/Kotlin/CryptocurrencyTracker/app/src/main/res/layout/watcher_favorites.xml" value="0.14492753623188406" />
+        <entry key="..\:/AndroidStudio/Kotlin/CryptocurrencyTracker/app/src/main/res/menu/bottom_nav_menu.xml" value="0.14375" />
+        <entry key="..\:/AndroidStudio/Kotlin/CryptocurrencyTracker/app/src/main/res/menu/bottom_navigation.xml" value="0.1609375" />
+        <entry key="..\:/AndroidStudio/Kotlin/CryptocurrencyTracker/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="jbr-17" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
