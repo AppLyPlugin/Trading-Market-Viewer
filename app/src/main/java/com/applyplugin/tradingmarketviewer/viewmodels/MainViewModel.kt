@@ -38,17 +38,23 @@ class MainViewModel @Inject constructor(
 
     var tradingMarketResponse: MutableLiveData<NetworkResult<List<TradingMarketResponse>>> =
         MutableLiveData()
+    var searchedTradingMarketResponse: MutableLiveData<NetworkResult<List<TradingMarketResponse>>> =
+        MutableLiveData()
 
     fun getTradingMarketData(query: HashMap<String, String>) = viewModelScope.launch {
-        callTradingMarketData(query)
+        callTradingMarket(query)
     }
 
     private var job: Job? = null
 
-    private suspend fun callTradingMarketData(query: HashMap<String, String>) {
+    fun searchData(searchQuery: HashMap<String, String>) = viewModelScope.launch {
+        searchTradingMarket(searchQuery)
+    }
+
+    private suspend fun callTradingMarket(query: HashMap<String, String>) {
         tradingMarketResponse.value = NetworkResult.Loading()
         job = viewModelScope.launch {
-            while(true) {
+            while (true) {
                 if (hasInternetConnection()) {
                     Log.d("MainViewModel", "Has Internet Connection!")
                     try {
@@ -59,7 +65,7 @@ class MainViewModel @Inject constructor(
                             offlineCacheTradingMarketData(tradingMarketData)
                         }
                     } catch (e: Exception) {
-                        tradingMarketResponse.value = NetworkResult.Error("Data Not Found")
+                        tradingMarketResponse.value = NetworkResult.Error("Error API Limitation")
                         e.stackTrace
                     }
                 } else {
@@ -68,6 +74,23 @@ class MainViewModel @Inject constructor(
                 }
                 delay(API_DELAY)
             }
+        }
+    }
+
+    private suspend fun searchTradingMarket(searchQuery: HashMap<String, String>) {
+        tradingMarketResponse.value = NetworkResult.Loading()
+        if (hasInternetConnection()) {
+            Log.d("MainViewModel", "Has Internet Connection!")
+            try {
+                val response = repository.remoteSource.searchTradingMarket(searchQuery)
+                tradingMarketResponse.value = handleTradingMarketResponse(response)
+            } catch (e: Exception) {
+                tradingMarketResponse.value = NetworkResult.Error("Error API Limitation")
+                e.stackTrace
+            }
+        } else {
+            Log.d("MainViewModel", "No Internet Connection!")
+            tradingMarketResponse.value = NetworkResult.Error("No Internet Connection")
         }
     }
 

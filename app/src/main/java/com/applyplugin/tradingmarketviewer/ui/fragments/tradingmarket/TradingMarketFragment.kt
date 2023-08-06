@@ -3,9 +3,12 @@ package com.applyplugin.tradingmarketviewer.ui.fragments.tradingmarket
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -16,13 +19,15 @@ import com.applyplugin.tradingmarketviewer.R
 import com.applyplugin.tradingmarketviewer.viewmodels.MainViewModel
 import com.applyplugin.tradingmarketviewer.adapter.TradingMarketAdapter
 import com.applyplugin.tradingmarketviewer.databinding.TradingmarketFragmentBinding
+import com.applyplugin.tradingmarketviewer.util.NetworkListener
 import com.applyplugin.tradingmarketviewer.viewmodels.TradingMarketViewModel
 import com.applyplugin.tradingmarketviewer.util.NetworkResult
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class TradingMarketFragment : Fragment() {
+class TradingMarketFragment : Fragment(), SearchView.OnQueryTextListener {
 
     private val mAdapter: TradingMarketAdapter by lazy { TradingMarketAdapter() }
     private val mainViewModel: MainViewModel by viewModels()
@@ -33,6 +38,8 @@ class TradingMarketFragment : Fragment() {
 
     private val arg by navArgs<TradingMarketFragmentArgs>()
 
+    private lateinit var networkListener: NetworkListener
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -42,11 +49,36 @@ class TradingMarketFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.mainViewModel = mainViewModel
 
+        @Suppress("DEPRECATION")
+        setHasOptionsMenu(true)
+
         setUpRecyclerView()
-        requestApiData()
+
+        tradingMarketViewModel.readBackOnline.observe(viewLifecycleOwner){
+            tradingMarketViewModel.backOnline = it
+        }
+
+        lifecycleScope.launch {
+            networkListener = NetworkListener()
+            networkListener.checkNetworkAvailability(requireContext())
+                .collect{status ->
+                    tradingMarketViewModel.networkStatus = status
+                    tradingMarketViewModel.showNetworkStatus()
+                    if(status){
+                        requestApiData()
+                    }else{
+                        loadDataFromCache()
+                    }
+                }
+
+        }
 
         binding.filterFab.setOnClickListener {
-            findNavController().navigate(R.id.action_tradingMarketFragment_to_tradingMarketBottomSheet)
+            if(tradingMarketViewModel.networkStatus) {
+                findNavController().navigate(R.id.action_tradingMarketFragment_to_tradingMarketBottomSheet)
+            }else{
+                tradingMarketViewModel.showNetworkStatus()
+            }
         }
 
         return binding.root
@@ -76,6 +108,35 @@ class TradingMarketFragment : Fragment() {
                     showShimmerEffect()
                 }
             }
+        }
+    }
+
+    private fun searchApiData(searchIds: String){
+        showShimmerEffect()
+        mainViewModel.searchData(tradingMarketViewModel.applySearchQuery(searchIds))
+        mainViewModel.searchedTradingMarketResponse.observe(viewLifecycleOwner){response ->
+            when(response){
+                is NetworkResult.Success -> {
+                    hideShimmerEffect()
+                    val tradingMarketData = response.data
+                    tradingMarketData?.let {
+                        mAdapter.setData(it)
+                    }
+                }
+                is NetworkResult.Error -> {
+                    hideShimmerEffect()
+                    loadDataFromCache()
+                    Toast.makeText(
+                        requireContext(),
+                        response.message.toString(),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+                is NetworkResult.Loading -> {
+                    showShimmerEffect()
+                }
+            }
+
         }
     }
 
@@ -114,5 +175,26 @@ class TradingMarketFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.tradingmarket_menu, menu)
+
+        val search = menu.findItem(R.id.menu_search)
+        val searchView = search.actionView as? SearchView
+        searchView?.queryHint = getString(R.string.enter_crypto_name)
+        searchView?.isSubmitButtonEnabled = true
+        searchView?.setOnQueryTextListener(this)
+    }
+
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        if(query != null){
+            searchApiData(query)
+        }
+        return true
+    }
+
+    override fun onQueryTextChange(newText: String?): Boolean {
+        return true
     }
 }

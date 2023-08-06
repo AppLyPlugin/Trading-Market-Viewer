@@ -13,4 +13,10 @@ interface TradingMarketApiInterface {
         @QueryMap queries: HashMap<String, String>
     ): Response<List<TradingMarketResponse>>
 
+    @GET("api/v3/coins/markets")
+    suspend fun searchTradingMarket(
+        @QueryMap queries: HashMap<String, String>
+    ): Response<List<TradingMarketResponse>>
+
+
 }

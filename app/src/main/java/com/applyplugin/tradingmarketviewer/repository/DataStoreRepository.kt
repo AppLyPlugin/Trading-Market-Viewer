@@ -2,15 +2,23 @@ package com.applyplugin.tradingmarketviewer.repository
 
 import android.content.Context
 import androidx.datastore.core.DataStore
+import androidx.datastore.dataStore
 import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.emptyPreferences
 import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import com.applyplugin.tradingmarketviewer.util.Constants
+import com.applyplugin.tradingmarketviewer.util.Constants.Companion.BACK_ONLINE
+import com.applyplugin.tradingmarketviewer.util.Constants.Companion.CURRENCY
+import com.applyplugin.tradingmarketviewer.util.Constants.Companion.CURRENCY_ID
 import com.applyplugin.tradingmarketviewer.util.Constants.Companion.DEFAULT_CURRENCY
 import com.applyplugin.tradingmarketviewer.util.Constants.Companion.DEFAULT_ORDER
+import com.applyplugin.tradingmarketviewer.util.Constants.Companion.ORDER
+import com.applyplugin.tradingmarketviewer.util.Constants.Companion.ORDER_ID
+import com.applyplugin.tradingmarketviewer.util.Constants.Companion.PREF_NAME
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.android.scopes.ActivityRetainedScoped
 import kotlinx.coroutines.flow.Flow
@@ -19,7 +27,7 @@ import kotlinx.coroutines.flow.map
 import java.io.IOException
 import javax.inject.Inject
 
-val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = Constants.PREF_NAME)
+val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = PREF_NAME)
 
 @ActivityRetainedScoped
 class DataStoreRepository @Inject constructor(
@@ -27,10 +35,11 @@ class DataStoreRepository @Inject constructor(
 ) {
 
     private object PreferencesKey{
-        val selectedCurrency = stringPreferencesKey(Constants.CURRENCY)
-        val selectedCurrencyId = intPreferencesKey(Constants.CURRENCY_ID)
-        val selectedOrder = stringPreferencesKey(Constants.ORDER)
-        val selectedOrderId = intPreferencesKey(Constants.ORDER_ID)
+        val selectedCurrency = stringPreferencesKey(CURRENCY)
+        val selectedCurrencyId = intPreferencesKey(CURRENCY_ID)
+        val selectedOrder = stringPreferencesKey(ORDER)
+        val selectedOrderId = intPreferencesKey(ORDER_ID)
+        val backOnline = booleanPreferencesKey(BACK_ONLINE)
     }
 
     suspend fun saveTradingViewFilter(
@@ -47,6 +56,13 @@ class DataStoreRepository @Inject constructor(
             preferences[PreferencesKey.selectedOrderId] = selectedOrderId
         }
     }
+
+    suspend fun saveBackOnline(backOnline: Boolean){
+        context.dataStore.edit { preference ->
+            preference[PreferencesKey.backOnline] = backOnline
+        }
+    }
+
 
     val readTradingViewFilter: Flow<TradingMarketFilter> = context.dataStore.data
         .catch {exception ->
@@ -68,6 +84,20 @@ class DataStoreRepository @Inject constructor(
                 selectedOrderId
             )
         }
+
+    val readBackOnline: Flow<Boolean> = context.dataStore.data
+        .catch { exception ->
+            if(exception is IOException){
+                emit(emptyPreferences())
+            }else{
+                throw exception
+            }
+        }
+        .map{preference ->
+            val backOnline = preference[PreferencesKey.backOnline] ?: false
+            backOnline
+        }
+
 }
 
 data class TradingMarketFilter(

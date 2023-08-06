@@ -28,5 +28,7 @@
     <string name="market_cap_desc">Market Cap Desc</string>
     <string name="name_asc">Name Asc</string>
     <string name="name_desc">Name Desc</string>
+    <string name="search">Search</string>
+    <string name="enter_crypto_name">Enter Crypto Name</string>
 
 </resources>

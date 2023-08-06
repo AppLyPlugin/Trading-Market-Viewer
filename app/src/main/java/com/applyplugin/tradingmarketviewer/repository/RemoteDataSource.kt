@@ -11,4 +11,8 @@ class RemoteDataSource @Inject constructor(private val tradingMarketAPIInterface
         return tradingMarketAPIInterface.getTradingMarket(query)
     }
 
+    suspend fun searchTradingMarket(query: HashMap<String, String>): Response<List<TradingMarketResponse>>{
+        return tradingMarketAPIInterface.searchTradingMarket(query)
+    }
+
 }

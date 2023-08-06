@@ -32,6 +32,8 @@ class Constants {
         const val CURRENCY_ID = "currency_id"
         const val ORDER = "order"
         const val ORDER_ID = "order_id"
+        const val BACK_ONLINE = "backOnline"
+        const val QUERY_SEARCH_ID = "ids"
 
     }
 
