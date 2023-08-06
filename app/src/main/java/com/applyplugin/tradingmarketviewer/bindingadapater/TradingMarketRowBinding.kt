@@ -3,10 +3,12 @@ package com.applyplugin.tradingmarketviewer.bindingadapater
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.scaleMatrix
 import androidx.databinding.BindingAdapter
 import coil.load
 import coil.size.Precision
 import coil.size.Scale
+import coil.size.Size
 import coil.transform.CircleCropTransformation
 import com.applyplugin.tradingmarketviewer.R
 
@@ -26,6 +28,7 @@ class TradingMarketRowBinding {
                 error(R.drawable.ic_error_loading_image)
                 transformations(CircleCropTransformation())
                 precision(Precision.EXACT)
+                size(120, 120)
                 scale(Scale.FILL)
             }
         }
@@ -33,8 +36,7 @@ class TradingMarketRowBinding {
         @BindingAdapter("setCurrentPrice")
         @JvmStatic
         fun setCurrentPrice(textView: TextView, currentPrice: Double) {
-            textView.text = "$$currentPrice"
-
+            textView.text = "$currentPrice"
         }
 
         @BindingAdapter("setPriceChange24h")
@@ -59,6 +61,23 @@ class TradingMarketRowBinding {
             }
 
             textView.setTextColor(ContextCompat.getColor(textView.context, textColor))
+        }
+
+        @BindingAdapter("setTime")
+        @JvmStatic
+        fun setTime(textView: TextView, last_updated: String) {
+            val dateAndTime = last_updated.split("T").toTypedArray()
+            val time = dateAndTime[1].split(".").toTypedArray()
+            textView.text = time[0]
+
+        }
+
+        @BindingAdapter("setDate")
+        @JvmStatic
+        fun setDate(textView: TextView, last_updated: String) {
+            val dateAndTime = last_updated.split("T").toTypedArray()
+            textView.text = dateAndTime[0].substring(2, dateAndTime[0].length)
+
         }
     }
 }
