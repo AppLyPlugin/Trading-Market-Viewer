@@ -1,7 +1,7 @@
 # Trading-Market-Viewer
 
 
-✳️Cryptocurrency Stock Market Viewer using Free Coingecko API(https://www.coingecko.com🦎)✳️
+✳️Cryptocurrency Stock Market Viewer using Free Coingecko API(https://www.coingecko.com 🦎)✳️
 
 
 ✅ Language             ⇝ Kotlin
