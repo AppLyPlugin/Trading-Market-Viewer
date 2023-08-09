@@ -1,7 +1,6 @@
 package com.applyplugin.tradingmarketviewer.bindingadapater
 
 import android.view.View
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.applyplugin.tradingmarketviewer.model.TradingMarketResponse
@@ -14,7 +13,7 @@ class TradingMarketBinding {
 
         @BindingAdapter("readApiResponse", "readDatabase", requireAll = true)
         @JvmStatic
-        fun ErrorImageViewVisibility(
+        fun errorImageViewVisibility(
             view: View,
             apiResponse: NetworkResult<List<TradingMarketResponse>>?,
             database: List<TradingMarketEntity>?

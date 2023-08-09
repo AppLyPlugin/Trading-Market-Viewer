@@ -1,0 +1,517 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lightGray"
+    tools:context=".ui.fragments.details.DetailsFragment">
+
+    <ImageView
+        android:id="@+id/iv_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_lbl_lastUpdated"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tv_rank"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="20dp"
+        android:autoSizeMaxTextSize="20sp"
+        android:text="1"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/crimson_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_currentPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:autoSizeMaxTextSize="20sp"
+        android:text="Price"
+        android:textColor="@color/darker"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/crimson_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_priceChange24h"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Change"
+        android:textSize="18sp"
+        android:fontFamily="@font/crimson_text"
+        app:layout_constraintStart_toStartOf="@+id/tv_currentPrice"
+        app:layout_constraintTop_toBottomOf="@+id/tv_currentPrice" />
+
+    <TextView
+        android:id="@+id/tv_priceChange24hPer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        android:text="Change%"
+        android:fontFamily="@font/crimson_text"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_priceChange24h"
+        app:layout_constraintStart_toEndOf="@+id/tv_priceChange24h" />
+
+    <TextView
+        android:id="@+id/tv_lbl_lastUpdated"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="20dp"
+        android:text="@string/tv_lastUpdated"
+        android:textSize="14sp"
+        android:textColor="@color/mediumGray"
+        android:textStyle="italic"
+        app:layout_constraintStart_toStartOf="@+id/tv_priceChange24h"
+        app:layout_constraintTop_toBottomOf="@+id/tv_priceChange24h" />
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:text="NAME"
+        android:fontFamily="@font/crimson_text"
+        android:autoSizeMaxTextSize="30sp"
+        android:textColor="@color/darker"
+        app:layout_constraintStart_toEndOf="@+id/iv_logo"
+        app:layout_constraintTop_toTopOf="@+id/iv_logo" />
+
+    <TextView
+        android:id="@+id/tv_symbol"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:text="NM"
+        android:fontFamily="@font/crimson_text"
+        android:autoSizeMaxTextSize="30sp"
+        android:textColor="@color/darker"
+        app:layout_constraintStart_toEndOf="@+id/iv_logo"
+        app:layout_constraintTop_toBottomOf="@+id/tv_name" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/iv_logo"
+        tools:layout_editor_absoluteX="1dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_lbl_24hHigh"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:paddingRight="5dp"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:fontFamily="@font/crimson_text"
+                android:text="@string/_24h_high" />
+
+            <TextView
+                android:id="@+id/tv_24hHigh"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:paddingLeft="5dp"
+                android:textColor="@color/darker"
+                android:layout_weight="1"
+                android:fontFamily="@font/crimson_text"
+                android:text="24H High Value" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_lbl_24hLow"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:paddingRight="5dp"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:fontFamily="@font/crimson_text"
+                android:text="@string/_24h_low" />
+
+            <TextView
+                android:id="@+id/tv_24hLow"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:paddingLeft="5dp"
+                android:fontFamily="@font/crimson_text"
+                android:textColor="@color/darker"
+                android:layout_weight="1"
+                android:text="24H Low Value" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_lbl_marketCap"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:paddingRight="5dp"
+                android:fontFamily="@font/crimson_text"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:text="@string/tv_marketCap" />
+
+            <TextView
+                android:id="@+id/tv_marketCap"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:paddingLeft="5dp"
+                android:fontFamily="@font/crimson_text"
+                android:textColor="@color/darker"
+                android:layout_weight="1"
+                android:text="Market Cap Value" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_lbl_marketCap_change"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:paddingRight="5dp"
+                android:fontFamily="@font/crimson_text"
+                android:layout_weight="1"
+                android:autoSizeMinTextSize="6sp"
+                android:gravity="right"
+                android:text="@string/market_cap_change_24h" />
+
+            <TextView
+                android:id="@+id/tv_marketCap_change"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:paddingLeft="5dp"
+                android:fontFamily="@font/crimson_text"
+                android:textColor="@color/darker"
+                android:layout_weight="1"
+                android:text="MC Change Value" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_lbl_marketCap_change_per"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:paddingRight="5dp"
+                android:fontFamily="@font/crimson_text"
+                android:layout_weight="1"
+                android:autoSizeMinTextSize="6sp"
+                android:gravity="right"
+                android:text="@string/market_cap_change_per_24h" />
+
+            <TextView
+                android:id="@+id/tv_marketCap_change_per"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:paddingLeft="5dp"
+                android:fontFamily="@font/crimson_text"
+                android:textColor="@color/darker"
+                android:layout_weight="1"
+                android:text="MC Change% Value" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_lbl_totalVolume"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:paddingRight="5dp"
+                android:fontFamily="@font/crimson_text"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:text="@string/tv_totalVolume" />
+
+            <TextView
+                android:id="@+id/tv_totalVolume"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:paddingLeft="5dp"
+                android:fontFamily="@font/crimson_text"
+                android:textColor="@color/darker"
+                android:layout_weight="1"
+                android:text="TV Value"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_lbl_circulatingSupply"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:paddingRight="5dp"
+                android:fontFamily="@font/crimson_text"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:text="@string/circulating_supply" />
+
+            <TextView
+                android:id="@+id/tv_circulatingSupply"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:paddingLeft="5dp"
+                android:fontFamily="@font/crimson_text"
+                android:textColor="@color/darker"
+                android:layout_weight="1"
+                android:text="CS Value" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_lbl_ath"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:paddingRight="5dp"
+                android:fontFamily="@font/crimson_text"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:text="@string/all_time_high" />
+
+            <TextView
+                android:id="@+id/tv_ath"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:paddingLeft="5dp"
+                android:fontFamily="@font/crimson_text"
+                android:textColor="@color/darker"
+                android:layout_weight="1"
+                android:text="ATH Value" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_lbl_ath_date"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:paddingRight="5dp"
+                android:fontFamily="@font/crimson_text"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:text="@string/all_time_high_date" />
+
+            <TextView
+                android:id="@+id/tv_ath_date"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:paddingLeft="5dp"
+                android:fontFamily="@font/crimson_text"
+                android:textColor="@color/darker"
+                android:layout_weight="1"
+                android:text="ATH Date Value" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_lbl_atl_change"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:paddingRight="5dp"
+                android:fontFamily="@font/crimson_text"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:text="@string/all_time_high_change" />
+
+            <TextView
+                android:id="@+id/tv_atl_change"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:paddingLeft="5dp"
+                android:fontFamily="@font/crimson_text"
+                android:textColor="@color/darker"
+                android:layout_weight="1"
+                android:text="ATH Change Value" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_lbl_atl"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:paddingRight="5dp"
+                android:fontFamily="@font/crimson_text"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:text="@string/all_time_low" />
+
+            <TextView
+                android:id="@+id/tv_atl"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:paddingLeft="5dp"
+                android:fontFamily="@font/crimson_text"
+                android:textColor="@color/darker"
+                android:layout_weight="1"
+                android:text="ATL Value" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_lbl_atl_date"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:paddingRight="5dp"
+                android:fontFamily="@font/crimson_text"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:text="@string/all_time_low_date" />
+
+            <TextView
+                android:id="@+id/tv_atl_date"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:paddingLeft="5dp"
+                android:fontFamily="@font/crimson_text"
+                android:textColor="@color/darker"
+                android:layout_weight="1"
+                android:text="ATL Date Value" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_lbl_ath_change"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:paddingRight="5dp"
+                android:fontFamily="@font/crimson_text"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:text="@string/all_time_low_change" />
+
+            <TextView
+                android:id="@+id/tv_ath_change"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:paddingLeft="5dp"
+                android:fontFamily="@font/crimson_text"
+                android:textColor="@color/darker"
+                android:layout_weight="1"
+                android:text="ATL Change Value" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -35,6 +35,20 @@ class Constants {
         const val BACK_ONLINE = "backOnline"
         const val QUERY_SEARCH_ID = "ids"
 
+        //Details Activity Bundle
+        const val TRADINGMARKET_BUNDLE = "tradingmarket_bundle"
+        const val BUNDLE_MARKETCAP_PRICE = "market_cap"
+        const val BUNDLE_MARKETCAP_CHANGE = "market_cap_change"
+        const val BUNDLE_ATH_PRICE = "ath"
+        const val BUNDLE_ATH_CHANGE = "ath_change"
+        const val BUNDLE_ATH_DATE = "ath_date"
+        const val BUNDLE_ATL_PRICE = "atl"
+        const val BUNDLE_ATL_CHANGE = "atl_change"
+        const val BUNDLE_ATL_DATE = "atl_date"
+        const val TITLE_MARKETCAP = "Market Cap"
+        const val TITLE_ATH = "All Time High"
+        const val TITLE_ATL = "All Time Low"
+
     }
 
     enum class Currency(val currency: String) {

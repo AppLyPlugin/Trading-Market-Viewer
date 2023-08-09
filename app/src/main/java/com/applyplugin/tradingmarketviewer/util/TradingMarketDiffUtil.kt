@@ -3,9 +3,9 @@ package com.applyplugin.tradingmarketviewer.util
 import androidx.recyclerview.widget.DiffUtil
 import com.applyplugin.tradingmarketviewer.model.TradingMarketResponse
 
-class TradingMarketDiffUtil(
-    private val oldList: List<TradingMarketResponse>,
-    private val newList: List<TradingMarketResponse>
+class TradingMarketDiffUtil<T>(
+    private val oldList: List<T>,
+    private val newList: List<T>
 ) : DiffUtil.Callback() {
     override fun getOldListSize(): Int {
         return oldList.size

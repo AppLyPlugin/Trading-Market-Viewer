@@ -11,6 +11,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/trading_view_row_layout"
+        onItemClickListener="@{result}"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 

@@ -11,7 +11,7 @@
 
     <string name="error_fragment">Error loading the page.</string>
 
-<!--    Currency Chip Group-->
+    <!--    Currency Chip Group-->
     <string name="chip_usd">USD</string>
     <string name="chip_eur">EUR</string>
     <string name="chip_jpy">JPY</string>
@@ -23,12 +23,33 @@
     <string name="chip_sgd">SGD</string>
     <string name="chip_krw">KRW</string>
 
-<!--    Order Chip Group-->
+    <!--    Order Chip Group-->
     <string name="market_cap_asc">Market Cap Asc</string>
     <string name="market_cap_desc">Market Cap Desc</string>
     <string name="name_asc">Name Asc</string>
     <string name="name_desc">Name Desc</string>
     <string name="search">Search</string>
+
+    <!--    Detail Activity-->
     <string name="enter_crypto_name">Enter Crypto Name</string>
+    <string name="tv_marketCap">Market Cap:</string>
+    <string name="tv_totalVolume">Total Volume:</string>
+    <string name="tv_lastUpdated">Last Updated:</string>
+    <string name="tv_totalSupply">Total Supply:</string>
+    <string name="tv_maxSupply">Max Supply:</string>
+    <string name="tv_ath">All Time High:</string>
+    <string name="tv_alt">All Time Low:</string>
+    <string name="appBar_price_change">Price Change</string>
+    <string name="market_cap_change_24h">Market Cap Change(24H):</string>
+    <string name="market_cap_change_per_24h">Market Cap Change%(24H):</string>
+    <string name="_24h_high">24H High:</string>
+    <string name="_24h_low">24H Low:</string>
+    <string name="circulating_supply">Circulating Supply:</string>
+    <string name="all_time_high">All Time High:</string>
+    <string name="all_time_high_date">All Time High Date:</string>
+    <string name="all_time_high_change">All Time High Change:</string>
+    <string name="all_time_low">All Time Low:</string>
+    <string name="all_time_low_date">All Time Low Date:</string>
+    <string name="all_time_low_change">All Time Low Change:</string>
 
 </resources>

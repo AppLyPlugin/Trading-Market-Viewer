@@ -2,19 +2,39 @@ package com.applyplugin.tradingmarketviewer.bindingadapater
 
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.scaleMatrix
 import androidx.databinding.BindingAdapter
+import androidx.navigation.findNavController
 import coil.load
 import coil.size.Precision
 import coil.size.Scale
 import coil.size.Size
 import coil.transform.CircleCropTransformation
 import com.applyplugin.tradingmarketviewer.R
+import com.applyplugin.tradingmarketviewer.model.TradingMarketResponse
+import com.applyplugin.tradingmarketviewer.ui.fragments.tradingmarket.TradingMarketFragment
+import com.applyplugin.tradingmarketviewer.ui.fragments.tradingmarket.TradingMarketFragmentDirections
 
 class TradingMarketRowBinding {
 
     companion object {
+
+        @BindingAdapter("onItemClickListener")
+        @JvmStatic
+        fun onItemClickListener(tradingMarketRowLayout: ConstraintLayout, details: TradingMarketResponse) {
+            tradingMarketRowLayout.setOnClickListener {
+                try {
+                    val action =
+                        TradingMarketFragmentDirections.actionTradingMarketFragmentToDetailsActivity(details)
+                    tradingMarketRowLayout.findNavController().navigate(action)
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            }
+
+        }
 
         @BindingAdapter("imageUrl")
         @JvmStatic

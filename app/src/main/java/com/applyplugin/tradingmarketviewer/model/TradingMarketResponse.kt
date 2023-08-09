@@ -1,8 +1,12 @@
 package com.applyplugin.tradingmarketviewer.model
 
-
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
+import kotlinx.android.parcel.RawValue
 
+
+@Parcelize
 data class TradingMarketResponse(
     @SerializedName("ath")
     val ath: Double,
@@ -49,11 +53,11 @@ data class TradingMarketResponse(
     @SerializedName("price_change_percentage_24h")
     val priceChangePercentage24h: Double,
     @SerializedName("roi")
-    val roi: Any,
+    val roi: @RawValue Any?,
     @SerializedName("symbol")
     val symbol: String,
     @SerializedName("total_supply")
     val totalSupply: Double,
     @SerializedName("total_volume")
     val totalVolume: Long
-)
+):Parcelable
