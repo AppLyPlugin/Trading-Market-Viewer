@@ -7,7 +7,7 @@ class Constants {
         val API_DELAY: Long = 30000
 
         //QUERY
-        val PER_PAGE = "20"
+        val PER_PAGE = "50"
         val PAGE = "1"
         val SPARKLINE = false
         val LOCALE = "en"
