@@ -3,6 +3,8 @@ package com.applyplugin.tradingmarketviewer.ui.fragments.watchlist
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
@@ -11,9 +13,11 @@ import androidx.core.app.NavUtils
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.applyplugin.tradingmarketviewer.R
 import com.applyplugin.tradingmarketviewer.adapter.WatchlistAdapter
 import com.applyplugin.tradingmarketviewer.databinding.WatchlistFragmentBinding
 import com.applyplugin.tradingmarketviewer.viewmodels.MainViewModel
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -51,6 +55,10 @@ class WatchlistFragment : Fragment() {
 
     }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.delete_all_watchlist, menu)
+    }
+
     private fun setUpRecyclerView(recyclerview: RecyclerView) {
         recyclerview.adapter = mAdapter
         recyclerview.layoutManager = LinearLayoutManager(requireContext())
@@ -60,14 +68,27 @@ class WatchlistFragment : Fragment() {
         if (item.itemId == android.R.id.home) {
             @Suppress("DEPRECATION")
             fragmentManager?.popBackStackImmediate()
+        }else if(item.itemId == R.id.delete_all_watchlist){
+            mainViewModel.deleteAllWatchlist()
+            showDeleteAllSnackBar()
         }
 
         @Suppress("DEPRECATION")
         return super.onOptionsItemSelected(item)
     }
 
+    private fun showDeleteAllSnackBar() {
+        Snackbar.make(
+            binding.root,
+            "All Watchlist Deleted",
+            Snackbar.LENGTH_SHORT
+        ).setAction("OK"){}
+            .show()
+    }
+
     override fun onDestroy() {
         super.onDestroy()
+        mAdapter.clearContextualActionMode()
         _binding = null
     }
 }
