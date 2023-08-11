@@ -5,7 +5,7 @@
         android:title="@string/tradingmarket_fragment"
         android:icon="@drawable/ic_bottom_nav_tradingmarket"/>
 
-    <item android:id="@+id/watchFragment"
+    <item android:id="@+id/watchlistFragment"
         android:title="@string/watchlist_fragment"
         android:icon="@drawable/ic_bottom_nav_watchlist"/>
 

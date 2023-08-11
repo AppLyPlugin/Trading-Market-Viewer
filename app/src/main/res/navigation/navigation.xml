@@ -22,10 +22,14 @@
             app:destination="@id/detailsActivity" />
     </fragment>
     <fragment
-        android:id="@+id/watchFragment"
+        android:id="@+id/watchlistFragment"
         android:name="com.applyplugin.tradingmarketviewer.ui.fragments.watchlist.WatchlistFragment"
         android:label="@string/watchlist_fragment"
-        tools:layout="@layout/fragment_watchlist" />
+        tools:layout="@layout/watchlist_fragment" >
+        <action
+            android:id="@+id/action_watchFragment_to_detailsActivity"
+            app:destination="@id/detailsActivity" />
+    </fragment>
     <dialog
         android:id="@+id/tradingMarketBottomSheet"
         android:name="com.applyplugin.tradingmarketviewer.ui.fragments.tradingmarket.botomsheet.TradingMarketBottomSheet"

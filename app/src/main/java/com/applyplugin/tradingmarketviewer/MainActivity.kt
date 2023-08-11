@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         val appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.tradingMarketFragment,
-                R.id.watchFragment
+                R.id.watchlistFragment
             )
         )
 

@@ -9,7 +9,7 @@ import com.google.gson.reflect.TypeToken
 @ProvidedTypeConverter
 class TradingMarketTypeConverter {
 
-    var gson = Gson()
+    private var gson = Gson()
 
     @TypeConverter
     fun tradingMarketResponseToString(tradingMarketResponse: List<TradingMarketResponse>): String{
@@ -20,6 +20,16 @@ class TradingMarketTypeConverter {
     fun stringToTradingMarketResponse(data: String): List<TradingMarketResponse>{
         var listType = object : TypeToken<List<TradingMarketResponse>>(){}.type
         return gson.fromJson(data, listType)
+    }
 
+    @TypeConverter
+    fun tradingMarketItemToString(tradingMarketResponse: TradingMarketResponse): String{
+        return gson.toJson(tradingMarketResponse)
+    }
+
+    @TypeConverter
+    fun stringToTradingMarketItem(data: String): TradingMarketResponse{
+        var type = object : TypeToken<TradingMarketResponse>(){}.type
+        return gson.fromJson(data, type)
     }
 }

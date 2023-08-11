@@ -8,11 +8,11 @@ import com.applyplugin.tradingmarketviewer.databinding.TradingmarketRowLayoutBin
 import com.applyplugin.tradingmarketviewer.model.TradingMarketResponse
 import com.applyplugin.tradingmarketviewer.util.TradingMarketDiffUtil
 
-class TradingMarketAdapter : RecyclerView.Adapter<TradingMarketAdapter.MyViewHolder>() {
+class TradingMarketAdapter : RecyclerView.Adapter<TradingMarketAdapter.ViewHolder>() {
 
     private var tradingMarketResponse = emptyList<TradingMarketResponse>()
 
-    class MyViewHolder(private val binding: TradingmarketRowLayoutBinding) :
+    class ViewHolder(private val binding: TradingmarketRowLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(tradingMarketResponse: TradingMarketResponse) {
@@ -21,22 +21,23 @@ class TradingMarketAdapter : RecyclerView.Adapter<TradingMarketAdapter.MyViewHol
         }
 
         companion object {
-            fun from(parent: ViewGroup): MyViewHolder {
+            fun from(parent: ViewGroup): ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val binding = TradingmarketRowLayoutBinding.inflate(layoutInflater, parent, false)
-                return MyViewHolder(binding)
+                return ViewHolder(binding)
             }
         }
 
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        return MyViewHolder.from(parent)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        return ViewHolder.from(parent)
     }
 
-    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentResult = tradingMarketResponse[position]
         holder.bind(currentResult)
+
     }
 
     override fun getItemCount(): Int {

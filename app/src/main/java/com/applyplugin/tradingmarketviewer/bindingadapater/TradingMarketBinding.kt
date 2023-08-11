@@ -4,7 +4,7 @@ import android.view.View
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.applyplugin.tradingmarketviewer.model.TradingMarketResponse
-import com.applyplugin.tradingmarketviewer.repository.database.TradingMarketEntity
+import com.applyplugin.tradingmarketviewer.repository.database.entities.TradingMarketEntity
 import com.applyplugin.tradingmarketviewer.util.NetworkResult
 
 class TradingMarketBinding {

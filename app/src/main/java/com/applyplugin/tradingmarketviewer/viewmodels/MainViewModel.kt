@@ -8,7 +8,8 @@ import android.util.Log
 import androidx.lifecycle.*
 import com.applyplugin.tradingmarketviewer.model.TradingMarketResponse
 import com.applyplugin.tradingmarketviewer.repository.Repository
-import com.applyplugin.tradingmarketviewer.repository.database.TradingMarketEntity
+import com.applyplugin.tradingmarketviewer.repository.database.entities.TradingMarketEntity
+import com.applyplugin.tradingmarketviewer.repository.database.entities.WatchlistEntity
 import com.applyplugin.tradingmarketviewer.util.Constants.Companion.API_DELAY
 import com.applyplugin.tradingmarketviewer.util.NetworkResult
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -27,11 +28,29 @@ class MainViewModel @Inject constructor(
     /************ ROOM DATABASE ************/
 
     val readTradingMarket: LiveData<List<TradingMarketEntity>> =
-        repository.localSource.readDatabase().asLiveData()
+        repository.localSource.readTradingMarketDB().asLiveData()
+
+    val readWatchlist: LiveData<List<WatchlistEntity>> =
+        repository.localSource.readWatchlistDB().asLiveData()
 
     private fun insertTradingMarketData(tradingMarketEntity: TradingMarketEntity) =
         viewModelScope.launch(Dispatchers.IO) {
             repository.localSource.insertTradingMarketData(tradingMarketEntity)
+        }
+
+    fun insertWatchlist(watchlistEntity: WatchlistEntity) =
+        viewModelScope.launch(Dispatchers.IO){
+            repository.localSource.insertWatchlist(watchlistEntity)
+        }
+
+    fun deleteWatchlist(watchlistEntity: WatchlistEntity) =
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.localSource.deleteWatchlist(watchlistEntity)
+        }
+
+    fun deleteAllWatchlist() =
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.localSource.deleteAllWatchlist()
         }
 
     /************ RETROFIT ************/

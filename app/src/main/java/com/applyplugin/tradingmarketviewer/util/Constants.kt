@@ -23,8 +23,9 @@ class Constants {
         //ROOM Database
         const val TRADINGMARKETVIEW_DB = "tradingmarketview_database"
         const val TRADINGMARKETVIEW_TABLE = "tradingmarketview_table"
+        const val WATCHLIST_TABLE = "watchlist_table"
 
-        //Bottom Sheep and Pref
+        //Bottom Sheet and Pref
         const val PREF_NAME = "tradingmarket_preferences"
         const val DEFAULT_CURRENCY = "usd"
         const val DEFAULT_ORDER = "market_cap_desc"
@@ -37,17 +38,6 @@ class Constants {
 
         //Details Activity Bundle
         const val TRADINGMARKET_BUNDLE = "tradingmarket_bundle"
-        const val BUNDLE_MARKETCAP_PRICE = "market_cap"
-        const val BUNDLE_MARKETCAP_CHANGE = "market_cap_change"
-        const val BUNDLE_ATH_PRICE = "ath"
-        const val BUNDLE_ATH_CHANGE = "ath_change"
-        const val BUNDLE_ATH_DATE = "ath_date"
-        const val BUNDLE_ATL_PRICE = "atl"
-        const val BUNDLE_ATL_CHANGE = "atl_change"
-        const val BUNDLE_ATL_DATE = "atl_date"
-        const val TITLE_MARKETCAP = "Market Cap"
-        const val TITLE_ATH = "All Time High"
-        const val TITLE_ATL = "All Time Low"
 
     }
 

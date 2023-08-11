@@ -1,19 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-        <variable
-            name="result"
-            type="com.applyplugin.tradingmarketviewer.model.TradingMarketResponse" />
-    </data>
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/watchlist_row_layout"
-        onItemClickListener="@{result}"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/watchlist_cardview"
@@ -32,13 +27,13 @@
 
                 <ImageView
                     android:id="@+id/imageView"
+                    imageUrl="@{watchlist.data.image}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="10dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:imageUrl="@{result.image}"
                     tools:srcCompat="@tools:sample/avatars" />
 
                 <LinearLayout
@@ -62,116 +57,128 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:padding="2dp"
                             android:fontFamily="@font/crimson_text"
                             android:gravity="bottom"
-                            android:text="@{result.name.toUpperCase()}"
-                            android:singleLine="true"/>
+                            android:padding="2dp"
+                            android:singleLine="true"
+                            android:text="@{watchlist.data.name}" />
 
                         <TextView
                             android:id="@+id/watchlist_symbol"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:padding="2dp"
                             android:fontFamily="@font/crimson_text"
                             android:gravity="top"
-                            android:text="@{result.symbol.toUpperCase()}"
-                            android:singleLine="true"/>
+                            android:padding="2dp"
+                            android:singleLine="true"
+                            android:text="@{watchlist.data.symbol}" />
                     </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="5"
-                    android:orientation="vertical">
-                    <TextView
-                        android:id="@+id/watchlist_price"
-                        setCurrentPrice="@{result.currentPrice}"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="5"
-                        android:textStyle="bold"
-                        android:padding="2dp"
-                        android:gravity="center|left"
-                        android:singleLine="true" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="6"
-                        android:orientation="horizontal">
+                        android:layout_weight="5"
+                        android:orientation="vertical">
 
-                        <TextView
-                            android:id="@+id/watchlist_price_change"
-                            setPriceChange24h="@{result.priceChange24h}"
-                            setValueFontColor="@{result.priceChangePercentage24h}"
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/crimson_text"
-                            android:gravity="left|top"
-                            android:padding="2dp"
-                            android:singleLine="true" />
+                            android:layout_weight="6"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/watchlist_price_change"
+                                setPriceChange24h="@{watchlist.data.priceChange24h}"
+                                setValueFontColor="@{watchlist.data.priceChange24h}"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/crimson_text"
+                                android:gravity="left|top"
+                                android:padding="2dp"
+                                android:singleLine="true" />
+
+                            <TextView
+                                android:id="@+id/watchlist_price_change_per"
+                                setPriceChangePer24h="@{watchlist.data.priceChangePercentage24h}"
+                                setValueFontColor="@{watchlist.data.priceChange24h}"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/crimson_text"
+                                android:gravity="left|top"
+                                android:padding="2dp"
+                                android:singleLine="true" />
+
+                        </LinearLayout>
 
                         <TextView
-                            android:id="@+id/watchlist_price_change_per"
-                            setPriceChangePer24h="@{result.priceChangePercentage24h}"
-                            setValueFontColor="@{result.priceChangePercentage24h}"
+                            android:id="@+id/watchlist_price"
+                            setCurrentPrice="@{watchlist.data.currentPrice}"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/crimson_text"
-                            android:gravity="left|top"
+                            android:layout_weight="5"
+                            android:gravity="center|left"
                             android:padding="2dp"
-                            android:singleLine="true" />
+                            android:singleLine="true"
+                            android:textStyle="bold" />
+
                     </LinearLayout>
-                </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="7"
                         android:orientation="vertical">
+
                         <TextView
                             android:id="@+id/last_updated_label"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="3"
-                            android:text="last updated:"
-                            android:textStyle="italic"
-                            android:textColor="@color/lightMediumGray"
-                            android:padding="2dp"
                             android:fontFamily="@font/crimson_text"
                             android:gravity="bottom|right"
-                            android:singleLine="true"/>
+                            android:padding="2dp"
+                            android:singleLine="true"
+                            android:text="last updated:"
+                            android:textColor="@color/lightMediumGray"
+                            android:textStyle="italic" />
 
                         <TextView
                             android:id="@+id/last_updated_date"
-                            setTime="@{result.lastUpdated}"
+                            setDate="@{watchlist.data.lastUpdated}"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:textColor="@color/mediumGray"
                             android:fontFamily="@font/crimson_text"
                             android:gravity="right|top"
                             android:padding="2dp"
-                            android:singleLine="true" />
+                            android:singleLine="true"
+                            android:textColor="@color/mediumGray" />
 
                         <TextView
                             android:id="@+id/last_updated_time"
-                            setDate="@{result.lastUpdated}"
+                            setTime="@{watchlist.data.lastUpdated}"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:textColor="@color/mediumGray"
                             android:fontFamily="@font/crimson_text"
                             android:gravity="right|top"
                             android:padding="2dp"
-                            android:singleLine="true" />
+                            android:singleLine="true"
+                            android:textColor="@color/mediumGray" />
                     </LinearLayout>
                 </LinearLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <data>
+
+        <variable
+            name="watchlist"
+            type="com.applyplugin.tradingmarketviewer.repository.database.entities.WatchlistEntity" />
+    </data>
 </layout>

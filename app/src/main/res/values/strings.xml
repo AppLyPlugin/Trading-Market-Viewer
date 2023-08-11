@@ -51,5 +51,6 @@
     <string name="all_time_low">All Time Low:</string>
     <string name="all_time_low_date">All Time Low Date:</string>
     <string name="all_time_low_change">All Time Low Change:</string>
+    <string name="save_to_watchlist">Save To Watchlist</string>
 
 </resources>

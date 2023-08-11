@@ -1,4 +1,4 @@
-package com.applyplugin.tradingmarketviewer.repository.database
+package com.applyplugin.tradingmarketviewer.repository.database.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
