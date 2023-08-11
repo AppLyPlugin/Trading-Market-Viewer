@@ -33,4 +33,7 @@
     <color name="chipBackgroundColor">@color/lightGray</color>
     <color name="checkedChipTextColor">@color/colorPrimary</color>
     <color name="chipTextColor">@color/darkGray</color>
+    <color name="statusBarColor">@color/darkGray</color>
+    <color name="contextualActionBarColor">@color/dark</color>
+    <color name="contextualModeColor">@color/dark</color>
 </resources>

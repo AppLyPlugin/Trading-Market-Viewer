@@ -10,7 +10,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.cardview.widget.CardView
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/watchlist_cardview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -22,6 +22,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/tradingmarket_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
@@ -61,7 +62,7 @@
                             android:gravity="bottom"
                             android:padding="2dp"
                             android:singleLine="true"
-                            android:text="@{watchlist.data.name}" />
+                            android:text="@{watchlist.data.name.toUpperCase()}" />
 
                         <TextView
                             android:id="@+id/watchlist_symbol"
@@ -72,7 +73,7 @@
                             android:gravity="top"
                             android:padding="2dp"
                             android:singleLine="true"
-                            android:text="@{watchlist.data.symbol}" />
+                            android:text="@{watchlist.data.symbol.toUpperCase()}" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -80,6 +81,17 @@
                         android:layout_height="match_parent"
                         android:layout_weight="5"
                         android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/watchlist_price"
+                            setCurrentPrice="@{watchlist.data.currentPrice}"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="5"
+                            android:gravity="center|left"
+                            android:padding="2dp"
+                            android:singleLine="true"
+                            android:textStyle="bold" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -112,17 +124,6 @@
                                 android:singleLine="true" />
 
                         </LinearLayout>
-
-                        <TextView
-                            android:id="@+id/watchlist_price"
-                            setCurrentPrice="@{watchlist.data.currentPrice}"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="5"
-                            android:gravity="center|left"
-                            android:padding="2dp"
-                            android:singleLine="true"
-                            android:textStyle="bold" />
 
                     </LinearLayout>
 
@@ -172,7 +173,7 @@
                 </LinearLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.cardview.widget.CardView>
+        </com.google.android.material.card.MaterialCardView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <data>
